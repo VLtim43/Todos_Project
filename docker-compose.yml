@@ -1,0 +1,14 @@
+version: "3.8"
+
+services:
+  postgres:
+    image: postgres:latest
+    environment:
+      POSTGRES_DB: todo_database
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: user
+    ports:
+      - "5433:5432"
+    restart: unless-stopped
+    volumes:
+      - ./init-db.sql:/docker-entrypoint-initdb.d/init-db.sql
